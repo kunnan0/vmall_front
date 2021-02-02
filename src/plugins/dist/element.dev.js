@@ -13,3 +13,7 @@ _vue["default"].use(_elementUi.Input);
 _vue["default"].use(_elementUi.Breadcrumb);
 
 _vue["default"].use(_elementUi.BreadcrumbItem);
+
+_vue["default"].use(_elementUi.Carousel);
+
+_vue["default"].use(_elementUi.CarouselItem);
