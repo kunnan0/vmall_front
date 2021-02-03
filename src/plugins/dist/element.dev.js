@@ -17,3 +17,9 @@ _vue["default"].use(_elementUi.BreadcrumbItem);
 _vue["default"].use(_elementUi.Carousel);
 
 _vue["default"].use(_elementUi.CarouselItem);
+
+_vue["default"].use(_elementUi.Card);
+
+_vue["default"].use(_elementUi.Col);
+
+_vue["default"].use(_elementUi.Row);

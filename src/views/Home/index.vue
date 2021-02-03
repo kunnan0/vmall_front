@@ -10,42 +10,52 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div v-for="item in homeList" key="item.id">
+    <div v-for="item in homeList" :key="item.id">
       <div class="activity-panel" v-if="item.type === 1">
         <!-- type=1时，只需要活动版块内容 -->
         <el-row>
           <el-col
+            class="content"
             :span="8"
-            v-for="(o, index) in 2"
+            v-for="o in item.panelContents"
             :key="o"
-            :offset="index > 0 ? 2 : 0"
           >
             <el-card :body-style="{ padding: '0px' }">
-              <img
-                :src="o.picUrl"
-                class="i"
-              />
+              <img :src="o.picUrl" class="i" />
               <a href="#" class="cover-link"></a>
-              
             </el-card>
           </el-col>
         </el-row>
 
         <!-- 商品title -->
       </div>
-      <section class="w mt30 clearfix"></section>
-      <section class="w mt30 clearfix"></section>
+      <section class="w mt30 clearfix" v-if="item.type === 2">
+        <m-shelf :title="item.name">
+          <div class="hot" slot="content">
+            <mall-goods v-for="(o,i) in item.panelContents" :key='i' :goods="o"></mall-goods>
+          </div>
+        </m-shelf>
+      </section>
+      <section class="w mt30 clearfix" v-if="item.type === 3">
+        <m-shelf :title="item.name"></m-shelf>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
+import MShelf from "@/components/Shelf.vue";
+import MallGoods from '@/components/MallGoods.vue';
 export default {
   data() {
     return {
       banner: [],
       homeList: [],
     };
+  },
+  components: {
+    MShelf,
+    MallGoods,
   },
   async created() {
     try {
